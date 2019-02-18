@@ -1,0 +1,7 @@
+{
+  "resourceGroup": "ratella-PCF",
+  "docDbAccountName": "ratelladocdb",
+  "docDbName": "docdb123",
+  "kind": "MongoDB",
+  "location": "South Central US"
+}

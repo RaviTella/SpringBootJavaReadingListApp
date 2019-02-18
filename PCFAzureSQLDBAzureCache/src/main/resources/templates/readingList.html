@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Reading List</title>
+	<link rel="stylesheet" th:href="@{/style.css}" />
+	
+	<style type="text/css">/* Layout */
+
+			body {
+			min-width: 630px;
+		}
+
+		#container {
+			padding-left: 200px;
+			padding-right: 190px;
+		}
+		
+		#container .column {
+			position: relative;
+			float: left;
+		}
+		
+		#center {
+			padding: 10px 20px;
+			width: 100%;
+		}
+		
+		#left {
+			width: 180px;
+			padding: 0 10px;
+			right: 240px;
+			margin-left: -100%;
+		}
+		
+		#right {
+			width: 130px;
+			padding: 0 10px;
+			margin-right: -100%;
+		}
+		
+		#footer {
+			clear: both;
+		}
+		
+		/* IE hack */
+		* html #left {
+			left: 150px;
+		}
+
+		/* Make the columns the same height as each other */
+		#container {
+			overflow: hidden;
+		}
+
+		#container .column {
+			padding-bottom: 1001em;
+			margin-bottom: -1000em;
+		}
+
+		/* Fix for the footer */
+		* html body {
+			overflow: hidden;
+		}
+		
+		* html #footer-wrapper {
+			float: left;
+			position: relative;
+			width: 100%;
+			padding-bottom: 10010px;
+			margin-bottom: -10000px;
+			background: #fff;
+		}
+
+		/* Aesthetics */
+		body {
+			margin: 0;
+			padding: 0;
+			font-family:Sans-serif;
+			line-height: 1.5em;
+		}
+		
+		p {
+			color: #555;
+		}
+
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		nav ul a {
+			color: darkgreen;
+			text-decoration: none;
+		}
+
+		#header, #footer {
+			font-size: large;
+			padding: 0.3em;
+			background: #BCCE98;
+		}
+
+		#left {
+			background: #DAE9BC;
+		}
+		
+		#right {
+			background: #F7FDEB;
+		}
+
+		#center {
+			background: #fff;
+		}
+
+		#container .column {
+			padding-top: 1em;
+		}
+	</style>
+</head>
+<body>
+<header id="header">
+<h2 style="text-align: center;">Reading List Application</h2>
+</header>
+
+<div id="container" style="-ms-overflow-x: auto;" th:unless="${#lists.isEmpty(books)}"><main class="column" id="center">
+<table align="center" class="responstable" id="table1">
+	<tbody>
+		<tr>
+			<th id="th.1" style="text-align: center; vertical-align: middle;"><span>Title</span></th>
+			<th id="th.1" style="text-align: center; vertical-align: middle;">Author</th>
+			<th id="th.1" style="text-align: center; vertical-align: middle;">ISBN</th>
+			<th id="th.1" style="text-align: center; vertical-align: middle;">Description</th>
+			<th id="th.1" style="text-align: center; vertical-align: middle;">Actions</th>
+		</tr>
+		<tr th:each="book : ${books}">
+			<td id="td.1" style="text-align: center; vertical-align: middle;" th:text="${book.title}"></td>
+			<td id="td.1" style="text-align: center; vertical-align: middle;" th:text="${book.author}"></td>
+			<td id="td.1" style="text-align: center; vertical-align: middle;" th:text="${book.isbn}"></td>
+			<td id="td.1" style="text-align: center; vertical-align: middle;" th:text="${book.description}"></td>
+	       <td id="td.1" style="text-align: center; vertical-align: top;"><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a> | 
+			    <a th:href="@{/edit/{id}(id=${book.id})}">Edit</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</main></div>
+
+<div th:if="${#lists.isEmpty(books)}">
+<table align="center" class="responstable">
+	<tbody>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+		<tr>
+			<td>
+			<h4 style="text-align: center;">You have no books in your book list</h4>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div id="footer-wrapper">
+<form action="#" method="post" th:action="@{/add}">
+<table align="center" >
+	<tbody>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="title">Title </label></td>
+			<td><input name="title" size="50" type="text" /></td>
+		</tr>
+		<tr>
+			<td><label for="author">Author:</label></td>
+			<td><input name="author" size="50" type="text" /></td>
+		</tr>
+		<tr>
+			<td><label for="isbn">ISBN:</label></td>
+			<td><input name="isbn" size="50" type="text" /></td>
+		</tr>
+		<tr>
+			<td><label for="description">Description:</label></td>
+			<td><input name="description" size="50" type="text" /></td>
+		</tr>
+		<tr>
+		<td><label ></label></td>
+			<td  style="text-align: center; vertical-align: middle;"><input type="submit" value="Add Book" class="search"/></td>
+		</tr>
+	</tbody>
+</table>
+</form>
+</div>
+</body>
+</html>

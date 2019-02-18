@@ -1,0 +1,24 @@
+{
+  "resourceGroup": "mtchoudev-pcfazure_rg",
+  "location": "South Central US",
+  "sqlServerName": "demozuresql",
+  "sqlServerParameters": {
+    "allowSqlServerFirewallRules": [
+      {
+      "ruleName": "allowAzure",
+      "startIpAddress": "0.0.0.0",
+      "endIpAddress": "0.0.0.0"
+      }
+    ],
+    "properties": {
+      "administratorLogin": "pcfmtchouadmin",
+      "administratorLoginPassword": "Password.1"
+    }
+  },
+  "sqldbName": "readinglist",
+  "sqldbParameters": {
+    "properties": {
+      "collation": "SQL_Latin1_General_CP1_CI_AS"
+    }
+  }
+}

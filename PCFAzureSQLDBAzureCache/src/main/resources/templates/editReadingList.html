@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Reading List</title>
+<link rel="stylesheet" th:href="@{/style.css}" />
+
+<style type="text/css">/* Layout */
+body {
+	min-width: 630px;
+}
+
+#container {
+	padding-left: 200px;
+	padding-right: 190px;
+}
+
+#container .column {
+	position: relative;
+	float: left;
+}
+
+#center {
+	padding: 10px 20px;
+	width: 100%;
+}
+
+#left {
+	width: 180px;
+	padding: 0 10px;
+	right: 240px;
+	margin-left: -100%;
+}
+
+#right {
+	width: 130px;
+	padding: 0 10px;
+	margin-right: -100%;
+}
+
+#footer {
+	clear: both;
+}
+
+/* IE hack */
+* html #left {
+	left: 150px;
+}
+
+/* Make the columns the same height as each other */
+#container {
+	overflow: hidden;
+}
+
+#container .column {
+	padding-bottom: 1001em;
+	margin-bottom: -1000em;
+}
+
+/* Fix for the footer */
+* html body {
+	overflow: hidden;
+}
+
+* html #footer-wrapper {
+	float: left;
+	position: relative;
+	width: 100%;
+	padding-bottom: 10010px;
+	margin-bottom: -10000px;
+	background: #fff;
+}
+
+/* Aesthetics */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Sans-serif;
+	line-height: 1.5em;
+}
+
+p {
+	color: #555;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul a {
+	color: darkgreen;
+	text-decoration: none;
+}
+
+#header, #footer {
+	font-size: large;
+	padding: 0.3em;
+	background: #BCCE98;
+}
+
+#left {
+	background: #DAE9BC;
+}
+
+#right {
+	background: #F7FDEB;
+}
+
+#center {
+	background: #fff;
+}
+
+#container .column {
+	padding-top: 1em;
+}
+</style>
+</head>
+<body>
+	<header id="header">
+		<h2 style="text-align: center;">Reading List Application</h2>
+	</header>
+	<form action="#" method="post" th:action="@{/edit}">
+		<div id="container" style="-ms-overflow-x: auto;">
+			<main class="column" id="center">
+
+			<table align="center" class="responstable" id="table1">
+
+				<tbody>
+					<tr>
+						<th id="th.1" style="text-align: center; vertical-align: middle;"><span>Title</span></th>
+						<th id="th.1" style="text-align: center; vertical-align: middle;">Author</th>
+						<th id="th.1" style="text-align: center; vertical-align: middle;">ISBN</th>
+						<th id="th.1" style="text-align: center; vertical-align: middle;">Description</th>
+
+					</tr>
+					<tr>
+						<td style="text-align: center; vertical-align: middle;"><input
+							style='width:100%' name="title" type="text" th:value="${book.title}" /></td>
+						<td style="text-align: center; vertical-align: middle;"><input
+							style='width:100%' name="author" size="50" type="text" th:value="${book.author}" /></td>
+						<td style="text-align: center; vertical-align: middle;"><input
+							style='width:100%' name="isbn" size="50" type="text" th:value="${book.isbn}" /></td>
+						<td style="text-align: center; vertical-align: middle;"><input
+							style='width:100%' name="description" size="50" type="text"
+							th:value="${book.description}" /></td>
+
+					</tr>
+				</tbody>
+			</table>
+			</main>
+
+		</div>
+
+		<div id="footer-wrapper">
+			<table align="center">
+				<tbody>
+
+					<tr>
+						<td colspan="2"
+							style="text-align: center; vertical-align: middle;">
+							<input
+							type="hidden" th:value="${book.id}" name="id" /> 
+							<input
+							type="submit" name="action" value="update" class="search" /></td>
+						<td colspan="2"
+							style="text-align: center; vertical-align: middle;"></td>
+						<td colspan="2"
+							style="text-align: center; vertical-align: middle;"><input
+							type="submit" name="action" value="Cancel" class="search" /></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</form>
+</body>
+</html>
